@@ -1,9 +1,13 @@
 import React, { Component } from 'react'
 import { Link } from 'react-router-dom'
+import Book from './Book'
 
 class BookShelf extends Component {
 
   render() {
+
+    const { books, book, changeShelf } = this.props
+
     return(
           <div className="list-books">
             <div className="list-books-title">
@@ -15,7 +19,11 @@ class BookShelf extends Component {
                   <h2 className="bookshelf-title">Currently Reading</h2>
                   <div className="bookshelf-books">
                     <ol className="books-grid">
-                    
+                      <Book
+                        book={ book }
+                        books={ books }
+                        key={ book.id }
+                      />
                     </ol>
                   </div>
                 </div>

@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import ShelfChange from './ShelfChange'
 
 class Book extends Component {
 
@@ -13,9 +14,9 @@ class Book extends Component {
       <li>
         <div className="book">
           <div className="book-top">
-            <div className="book-cover" style={{ backgroundImage: `url(${coverImg})`}}></div>
+            <div className="book-cover" style={{ width: 128, height: 193, backgroundImage: `url(${coverImg})`}}></div>
             <div className="book-shelf-changer">
-              
+              <ShelfChange/>
             </div>
           </div>
           <div className="book-title">{ title }</div>
