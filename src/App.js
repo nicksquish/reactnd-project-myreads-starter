@@ -1,11 +1,10 @@
 import React from 'react'
 import * as BooksAPI from './BooksAPI'
 import './App.css'
-import { BrowserRouter as Router } from 'react-router-dom'
 import { Route } from 'react-router-dom'
+import { Link } from 'react-router-dom'
 import SearchBooks from './SearchBooks'
-import BookShelf from './BookShelf'
-import Book from './Book'
+import BooksList from './BooksList'
 import ShelfChange from './ShelfChange'
 
 class BooksApp extends React.Component {
@@ -31,19 +30,34 @@ class BooksApp extends React.Component {
     const { books } = this.state
 
     return (
-      <Router>
+      
         <div className="app">
 
           <Route exact path='/' render={() => (
-            <BookShelf/>
+            <div className="list-books">
+              <div className="list-books-title">
+                <h1>MyReads</h1>
+              </div>
+              <BooksList
+                books={ books }
+                changeShelf={ this.changeShelf }
+              />
+            </div>
             )}/>
 
-          <Route path='/search' render={() => (
-            <SearchBooks/>
+          <Route path='/search' render={({ history }) => (
+            <SearchBooks
+            books={ books }
+            changeShelf={ this.changeShelf } 
+            />
           )}/>
 
+          <div className="open-search">
+            <Link to='/search'>Add a book</Link>
+          </div>
+
         </div>
-      </Router>
+      
     )
   }
 }
